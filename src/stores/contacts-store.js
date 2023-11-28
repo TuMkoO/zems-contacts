@@ -17,18 +17,20 @@ export const useContactsStore = defineStore("contacts", {
         phone: "+7(987)655-11-44",
         email: "swedgtuy@mail.ru",
         category: "Родственник",
-        created: Date.now(),
+        created: "2017-01-26",
       },
       {
         id: "2z00ph11iou",
-        name: "Двери Вадим 3",
+        name: "Доставка Андрей Стоянов",
         phone: "+7(987)655-11-44",
-        email: "swedgtuy@mail.ru",
+        email: "swe56465767fvghdgtuy@mail.ru",
         category: "Коллеги",
-        created: Date.now(),
+        created: "2021-07-26",
       },
     ],
+    currentContact: null,
     message: null,
+    messageTimeout: null,
   }),
   actions: {
     async addContact(contact) {
@@ -65,11 +67,6 @@ export const useContactsStore = defineStore("contacts", {
           (contact) => contact.id === contactId
         );
 
-        //Имитация отправки запроса к API
-        await new Promise((resolve) => {
-          setTimeout(() => resolve(console.log("load complete...")), 1000);
-        });
-
         //delete
         this.contacts.splice(id, 1);
 
@@ -99,16 +96,23 @@ export const useContactsStore = defineStore("contacts", {
       }
     },
     setMessage(message) {
-      console.log(message);
+      clearTimeout(this.messageTimeout);
+
       this.message = message;
 
-      setTimeout(() => {
+      this.messageTimeout = setTimeout(() => {
         this.message = null;
-        console.log("clear!");
+        this.messageTimeout = null;
       }, 3000);
     },
     clearMessage() {
       this.message = null;
+    },
+    setContact(contact) {
+      this.currentContact = contact;
+    },
+    clearContact() {
+      this.currentContact = null;
     },
   },
 });

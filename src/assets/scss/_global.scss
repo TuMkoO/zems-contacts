@@ -1,8 +1,18 @@
 /*----------------------------------- */
 /* Basic settings
 ------------------------------------- */
+
+:root {
+  --q-negative: #eb5757;
+  --q-warning: #ffc700;
+}
+
+body {
+  font-family: "Proxima Nova", "Roboto", sans-serif;
+  color: $grey-medium;
+}
+
 .container {
-  max-width: 990px;
   margin: 0 auto;
   width: 100%;
 }
@@ -11,4 +21,296 @@
   max-width: 1820px;
   margin: 0 auto;
   width: 100%;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+/*----------------------------------- */
+/* Colors
+------------------------------------- */
+
+.bg-grey-main {
+  background-color: $grey-main;
+}
+
+/*----------------------------------- */
+/* Typography
+------------------------------------- */
+.fw-700 {
+  font-weight: 700;
+}
+
+/*----------------------------------- */
+/* Buttons
+------------------------------------- */
+.add-btn {
+  font-size: 12px;
+  line-height: 16px;
+  height: 32px;
+  color: #2f80ed;
+  padding: 0 16px 0 19px;
+  &:before {
+    border: 1px solid #2f80ed;
+  }
+  .q-icon {
+    margin-right: 3px;
+    font-size: 1em;
+    font-weight: 700;
+  }
+}
+
+body.desktop .add-btn.q-focusable:focus > .q-focus-helper,
+body.desktop .add-btn.q-manual-focusable--focused > .q-focus-helper,
+body.desktop .add-btn.q-hoverable:hover > .q-focus-helper {
+  opacity: 0.7;
+}
+
+.btn-submit {
+  border-radius: 4px;
+  padding: 0 16px 0 18px;
+  min-height: 40px;
+  background-color: var(--q-warning);
+  border: none;
+  transition: all 0.4s;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #ffd84c;
+  }
+  &:active {
+    background-color: #f3c41e;
+    transition: all 0.1s;
+  }
+  &-icon {
+    margin-right: 4px;
+    font-size: 0;
+  }
+  &-text {
+    color: $grey-medium;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .loader {
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.btn-delete {
+  margin-left: 7px;
+  padding: 0 16px 0 18px;
+  border-radius: 4px;
+  border: none;
+  min-height: 40px;
+  background-color: #ffffff;
+  color: #2f80ed;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    transition: all 0.4s;
+    box-shadow: 0px 0px 0px 1px #2f80ed inset;
+  }
+  &-icon {
+    margin-right: 3px;
+    font-size: 0;
+  }
+}
+
+/*----------------------------------- */
+/* Select
+------------------------------------- */
+.select {
+  .q-field__control {
+    padding: 0 8px;
+    color: transparent;
+    &:before {
+      border: 1px solid $grey-light;
+    }
+
+    &:hover {
+      .q-field__native {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .q-field__control:hover:before {
+    border-color: $blue-main;
+  }
+
+  .q-field__control.text-negative {
+    color: transparent !important;
+    &::before {
+      border-color: var(--q-negative) !important;
+    }
+
+    .q-icon.text-negative {
+      font-size: 14px;
+    }
+  }
+
+  .q-field__native {
+    line-height: 20px;
+  }
+
+  .q-field__marginal {
+    color: $grey-light;
+  }
+
+  .q-field__bottom {
+    padding: 0;
+    font-size: 10px;
+    text-align: right;
+  }
+  .q-field__messages {
+    line-height: 16px;
+  }
+}
+
+.select.q-field--focused.q-field--highlighted {
+  .q-field__control:before {
+    border: 1px solid $blue-main;
+  }
+}
+
+.select.q-field--highlighted .q-field__control:hover:before {
+  border-color: $blue-main;
+}
+
+.q-menu {
+  margin-top: 8px !important;
+  box-shadow: 0px 0px 6px 0px #94b5e159;
+}
+.q-item {
+  min-height: 40px;
+  padding: 0 10px 0 16px;
+}
+.q-item.q-router-link--active,
+.q-item--active {
+  color: inherit;
+  font-weight: 700;
+}
+.q-item__label {
+  text-transform: uppercase;
+  position: relative;
+}
+body.desktop .q-focusable:focus > .q-focus-helper,
+body.desktop .q-manual-focusable--focused > .q-focus-helper,
+body.desktop .q-hoverable:hover > .q-focus-helper {
+  background: #eaf2fd;
+  opacity: 1;
+}
+body.desktop .q-focus-helper:before,
+body.desktop .q-focus-helper:after {
+  background: transparent;
+  opacity: 0;
+}
+
+.select.q-field--float {
+  .q-field__label {
+    display: none;
+  }
+}
+.select.q-field--float.q-field--auto-height.q-field--dense.q-field--labeled
+  .q-field__control-container {
+  padding-top: 0;
+}
+
+.select.q-field--error.q-field--highlighted {
+  .q-field__label {
+    color: var(--q-negative);
+  }
+}
+
+.select .q-field__label {
+  color: #a9a9a9;
+}
+
+.select-short {
+  .q-field__native {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+.select-long-popup {
+  .q-item__label {
+    text-transform: capitalize;
+  }
+  .q-item.q-router-link--active,
+  .q-item--active {
+    font-weight: 400;
+  }
+}
+
+/*----------------------------------- */
+/* Input
+------------------------------------- */
+.input {
+  .q-field__control {
+    padding: 0 9px 0 8px;
+    color: transparent;
+    &:before {
+      border: 1px solid $grey-light;
+    }
+  }
+
+  .q-field__control.text-negative {
+    color: transparent !important;
+    &::before {
+      border-color: var(--q-negative) !important;
+    }
+
+    .q-icon.text-negative {
+      font-size: 14px;
+    }
+
+    .q-field__native.q-placeholder {
+      color: var(--q-negative);
+      &::placeholder {
+        color: var(--q-negative);
+      }
+    }
+  }
+
+  .q-field__bottom {
+    padding: 0;
+    font-size: 10px;
+  }
+  .q-field__messages {
+    line-height: 16px;
+    text-align: right;
+  }
+
+  .q-field__native.q-placeholder {
+    &::placeholder {
+      color: #a9a9a9;
+    }
+  }
+}
+
+.input.q-field--outlined .q-field__control:hover:before {
+  border-color: $blue-main;
+}
+
+.input.q-field--focused.q-field--highlighted {
+  .q-field__control:before {
+    border: 1px solid $blue-main;
+  }
+}
+
+.input.q-field--highlighted .q-field__control:hover:before {
+  border-color: $blue-main;
 }

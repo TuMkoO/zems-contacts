@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="container">
-      <q-card class="my-card">
-        <q-card-section>
+    <div class="card-wrapper">
+      <q-card class="card">
+        <q-card-section class="card__section">
           <div>
             <ContactForm form-type="add" />
           </div>
